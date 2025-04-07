@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/payment
+    username: leo
+    password: 123
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: POSTGRESQL
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        # aqui define o que foi enviado ao consumidor, por meio da funcao payload
+        spring.json.type.mapping: paymentConfirmation:com.leonardo.payment.notification.PaymentNotificationRequest
+
+server:
+  port: 8060
+
+application:
+  config:
+    product-url: http://localhost:8222/api/v1/products

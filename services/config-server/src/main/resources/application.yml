@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: config-server
+  profiles:
+    active: native
+# aqui ele indica onde procurar quando procurar o banco de dados para cada servico
+# foi criado a pasta configurations onde vai funcionar as configuracoes do servico
+# no server
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/configurations
+
+server:
+  port: 8888
+

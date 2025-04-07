@@ -1,0 +1,13 @@
+eureka:
+  instance:
+    hostname: localhost
+  # para nao registra nele mesmo colocar falso
+  client:
+    register-with-eureka: false
+    # pois nao havera register nao precisa dar o fetch
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}/${server.port}/eureka/
+
+server:
+  port: 8761
